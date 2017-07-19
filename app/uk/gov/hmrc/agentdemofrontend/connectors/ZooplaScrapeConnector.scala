@@ -2,11 +2,11 @@ package uk.gov.hmrc.agentdemofrontend.connectors
 
 import org.jsoup.Jsoup
 
+import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent._
 import scala.util.Try
-import scala.concurrent.ExecutionContext.Implicits.global
 
-object ZooplaScraperConnector {
+class ZooplaScraperConnector {
   def getAverageValue(postcode:String): Future[Double] = {
     def redirectUrl = Try {
       val doc =  Jsoup.connect(s"${"https://www.zoopla.co.uk"}/search/?q=$postcode").get()
