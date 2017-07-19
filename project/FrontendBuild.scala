@@ -3,8 +3,8 @@ import sbt._
 object FrontendBuild extends Build with MicroService {
   import scala.util.Properties.envOrElse
 
-  val appName = "agent-demo-frontend"
-  val appVersion = envOrElse("AGENT_DEMO_FRONTEND_VERSION", "999-SNAPSHOT")
+  val appName = "land-value-tax-calculator"
+  val appVersion = envOrElse("LAND_VALUE_TAX_CALCULATOR", "999-SNAPSHOT")
 
   override lazy val appDependencies: Seq[ModuleID] = AppDependencies()
 }
@@ -29,7 +29,8 @@ private object AppDependencies {
     "uk.gov.hmrc" %% "play-health" % "2.1.0",
     "uk.gov.hmrc" %% "play-ui" % "7.4.0",
     "uk.gov.hmrc" %% "agent-kenshoo-monitoring" % "2.3.0",
-    "uk.gov.hmrc" %% "agent-mtd-identifiers" % "0.5.0"
+    "uk.gov.hmrc" %% "agent-mtd-identifiers" % "0.5.0",
+    "org.jsoup" % "jsoup" % "1.7.3"
   )
 
   val test = Seq(
