@@ -1,0 +1,30 @@
+@import uk.gov.hmrc.agentdemofrontend.config.AppConfig
+@()(implicit request: Request[_], messages: Messages, appConfig: AppConfig)
+
+
+@uk.gov.hmrc.agentdemofrontend.views.html.main_template(appConfig, title = Messages("reduction.title"), bodyClasses = None) {
+    <p>
+    If you're on a low income, you may be entitled to some help towards paying your Land Value Tax. This is called Land Value Tax  Reduction (LVTR).
+    </p>
+    <p>
+    To apply for LVTR you need to meet the following criteria
+    <ul style="list-style-type:circle">
+        <li>
+            You must live at the location where you are applying for LVTR. (You cannot make a claim for a reduction on Commercial land or a second residential location)
+        </li>
+        <li>
+        If you are temporarily away from home and of pensionable age. The government will allow you to apply for  LVTR provided your period of absence does not exceed 12 weeks
+        </li>
+        <li>
+            Your income must not exceed the upper limit of £25000 per year. (This includes income from Employment, state or private pension). Your rate of LVTR will be calculated based on your actual level of income.
+        </li>
+        <li>
+            Your savings must not exceed the capital limits of £16000
+        </li>
+    </ul>
+    <p>
+    Your Land Value Tax notification form will include an application form for LVTR. If you choose to receive a <a href="/land-value-tax-calculator/reduction">paperless</a> notification a link will be included so you can apply online.
+    </p>
+
+}
+

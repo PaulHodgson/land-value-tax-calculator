@@ -1,10 +1,13 @@
 # microservice specific routes
 
-GET         /                               @uk.gov.hmrc.agentdemofrontend.controllers.LandTaxController.redirectToSalaryForm
+GET         /                                @uk.gov.hmrc.agentdemofrontend.controllers.LandTaxController.redirectToSalaryForm
+
+GET         /explanation                     @uk.gov.hmrc.agentdemofrontend.controllers.LandTaxController.explanation
+GET         /reduction                       @uk.gov.hmrc.agentdemofrontend.controllers.LandTaxController.reduction
 
 GET         /calculate                       @uk.gov.hmrc.agentdemofrontend.controllers.LandTaxController.showSalaryForm
 POST        /calculate                       @uk.gov.hmrc.agentdemofrontend.controllers.LandTaxController.submitSalaryForm
 
-GET        /submit/                         @uk.gov.hmrc.agentdemofrontend.controllers.LandTaxController.calculateTax(postcode: String, land: String)
+GET        /submit/                          @uk.gov.hmrc.agentdemofrontend.controllers.LandTaxController.calculateTax(postcode: String, land: String)
 
 

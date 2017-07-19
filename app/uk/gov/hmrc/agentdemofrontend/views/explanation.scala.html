@@ -1,0 +1,17 @@
+@import uk.gov.hmrc.agentdemofrontend.config.AppConfig
+@()(implicit request: Request[_], messages: Messages, appConfig: AppConfig)
+
+
+@uk.gov.hmrc.agentdemofrontend.views.html.main_template(appConfig, title = Messages("explanation.title"), bodyClasses = None) {
+    <p>
+    You will receive a notification of your  Land Value Tax from HMRC. This will be based on a valuation provided by the VOA. If you would like to receive this electronically you can sign up to <a href="/land-value-tax-calculator/reduction">go paperless</a>
+    </p>
+    <p>
+    You have the right to appeal against the valuation of your land once you receive your official notification. Details on how to do this will be included in the notification form. This service is an estimator only, you cannot appeal against these results.
+    </p>
+    <p>
+        If you are on a low income you may be entitled to some help towards paying your Land Value Tax. This is called <a href="/land-value-tax-calculator/reduction">Land Value Tax Reduction</a> (LVTR)
+    </p>
+
+}
+

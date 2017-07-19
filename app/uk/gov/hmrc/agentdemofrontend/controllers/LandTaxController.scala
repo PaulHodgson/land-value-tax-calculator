@@ -39,6 +39,14 @@ class LandTaxController @Inject()(override val messagesApi: MessagesApi)
     Future successful Ok(html.salary(landDetails))
   }
 
+  def explanation(): Action[AnyContent] = Action.async { implicit request =>
+    Future successful Ok(html.explanation())
+  }
+
+  def reduction(): Action[AnyContent] = Action.async { implicit request =>
+    Future successful Ok(html.reduction())
+  }
+
   def submitSalaryForm(): Action[AnyContent] = Action.async {
     implicit request =>
       landDetails.bindFromRequest().fold(

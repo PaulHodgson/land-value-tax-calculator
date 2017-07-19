@@ -2,6 +2,9 @@ error.arn.invalid = Please enter a valid ARN (Agent Reference Number)
 error.mtdItId.invalid = Please enter a valid MTD-IT-ID (Client ID)
 error.postcode.invalid = Please enter a valid Postcode
 
+explanation.title=Land Value Tax Help
+reduction.title=Land Value Tax Reduction
+
 salary.title=Land Value Tax Calculator
 salary.postcode=Enter Postcode.
 salary.land=You can use the calculator as many times as you need.

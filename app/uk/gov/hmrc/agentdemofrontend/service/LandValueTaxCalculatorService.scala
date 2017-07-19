@@ -23,7 +23,7 @@ class LandValueTaxCalculatorService @Inject()(zooplaScraperConnector: ZooplaScra
   }
 
   def commercialValue: Future[Double] = {
-    Future successful 100
+    Future successful 100000
   }
 
 }
