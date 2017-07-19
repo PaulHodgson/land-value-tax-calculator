@@ -1,23 +1,26 @@
 package uk.gov.hmrc.agentdemofrontend.controllers
 
-import javax.inject.Inject
+import javax.inject.{Singleton,Inject}
 
 import play.api.data.Form
-import play.api.data.Forms.{mapping, nonEmptyText, _}
+import play.api.data.Forms.{mapping, nonEmptyText}
 import play.api.i18n.{I18nSupport, MessagesApi}
-import play.api.mvc.{Action, AnyContent, Request}
+import play.api.mvc.{Action, AnyContent}
 import uk.gov.hmrc.agentdemofrontend.config.AppConfig
-import uk.gov.hmrc.play.frontend.controller.FrontendController
 import uk.gov.hmrc.agentdemofrontend.controllers.FieldMappings._
-import uk.gov.hmrc.play.http.HeaderCarrier
+import uk.gov.hmrc.agentdemofrontend.model.LandType
+import uk.gov.hmrc.agentdemofrontend.service.LandValueTaxCalculatorService
 import uk.gov.hmrc.agentdemofrontend.views.html
+import uk.gov.hmrc.play.frontend.controller.FrontendController
 
 import scala.concurrent.Future
 
 case class LandDetails(postcode: String, land: String)
 
+@Singleton
 class LandTaxController @Inject()(override val messagesApi: MessagesApi)
-                                 (implicit appConfig: AppConfig)
+                                 (implicit appConfig: AppConfig,
+                                  calc: LandValueTaxCalculatorService )
   extends FrontendController with I18nSupport {
 
 
@@ -50,9 +53,11 @@ class LandTaxController @Inject()(override val messagesApi: MessagesApi)
   }
 
   def calculateTax(postcode: String, land: String): Action[AnyContent] = Action.async { implicit request =>
-    val calculatedAmount: Float = 123123
-
-    Future successful Ok(html.calculation_complete(postcode, calculatedAmount))
+    calc.calc(postcode,LandType.toLandType(land)).map { x =>
+      Ok(html.calculation_complete(postcode, x))
+    }.recover {
+      case _=> BadRequest
+    }
   }
 
 }

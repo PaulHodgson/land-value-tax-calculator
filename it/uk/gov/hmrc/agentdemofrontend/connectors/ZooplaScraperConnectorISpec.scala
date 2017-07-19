@@ -6,7 +6,7 @@ class ZooplaScraperConnectorISpec extends UnitSpec{
 
   "getAverageValue"  should {
     "return 260000 for RH16 3UN" in {
-      await(ZooplaScraperConnector.getAverageValue("RH16 3UN")) shouldBe 260000
+      await( new ZooplaScraperConnector().getAverageValue("RH16 3UN")) shouldBe 260000
     }
     
   }
