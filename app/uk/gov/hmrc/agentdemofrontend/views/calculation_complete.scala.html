@@ -1,0 +1,25 @@
+@import uk.gov.hmrc.agentdemofrontend.config.AppConfig
+@import uk.gov.hmrc.agentdemofrontend.controllers.routes.LandTaxController
+@(postcode: String, calculatedAmount: Float)(implicit request: Request[_], messages: Messages, appConfig: AppConfig)
+
+@uk.gov.hmrc.agentdemofrontend.views.html.main_template(appConfig, title = "Your estimated take-home pay", bodyClasses = None) {
+<div class="grid-row">
+    <div class="column-two-thirds">
+
+        <div class="transaction-banner--complete">
+            <h1 class="bold-large">Your estimated take-home pay</h1>
+            <p>
+                Your PostCode is: <br>
+                <strong class="heading-medium">@postcode</strong>
+            </p>
+            <p>
+                In total you pat: <br>
+                <strong class="heading-medium">@calculatedAmount</strong>
+            </p>
+        </div>
+
+        <a href="@LandTaxController.showSalaryForm" class="button">Start Again</a>
+    </div>
+</div>
+</div>
+}
