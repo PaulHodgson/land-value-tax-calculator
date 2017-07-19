@@ -2,8 +2,8 @@
 
 GET         /                               @uk.gov.hmrc.agentdemofrontend.controllers.LandTaxController.redirectToSalaryForm
 
-GET         /your-pay                       @uk.gov.hmrc.agentdemofrontend.controllers.LandTaxController.showSalaryForm
-POST        /your-pay                       @uk.gov.hmrc.agentdemofrontend.controllers.LandTaxController.submitSalaryForm
+GET         /calculate                       @uk.gov.hmrc.agentdemofrontend.controllers.LandTaxController.showSalaryForm
+POST        /calculate                       @uk.gov.hmrc.agentdemofrontend.controllers.LandTaxController.submitSalaryForm
 
 GET        /submit/                         @uk.gov.hmrc.agentdemofrontend.controllers.LandTaxController.calculateTax(postcode: String, land: String)
 

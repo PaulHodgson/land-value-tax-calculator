@@ -2,7 +2,7 @@ error.arn.invalid = Please enter a valid ARN (Agent Reference Number)
 error.mtdItId.invalid = Please enter a valid MTD-IT-ID (Client ID)
 error.postcode.invalid = Please enter a valid Postcode
 
-salary.title=LandTax
+salary.title=Land Value Tax Calculator
 salary.postcode=Enter Postcode.
 salary.land=You can use the calculator as many times as you need.
 salary.Residential.label=Residential
@@ -11,4 +11,4 @@ salary.Commercial.label=Commercial
 quick_calc.salary.Residential.label=Residential
 quick_calc.salary.Commercial.label=Commercial
 
-quick_calc.calculation.title = Your estimated take-home pay
+quick_calc.calculation.title = Your estimated land value tax is
