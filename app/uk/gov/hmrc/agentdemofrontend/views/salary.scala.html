@@ -5,7 +5,7 @@
 @import uk.gov.hmrc.agentdemofrontend.controllers.LandDetails
 @(detailsForm: Form[LandDetails])(implicit request: Request[_], messages: Messages, appConfig: AppConfig)
 @periodLabels = @{List("Residential","Commercial")}
-@radioFieldPeriod = @{ detailsForm("period") }
+@radioFieldPeriod = @{ detailsForm("land") }
 
 @uk.gov.hmrc.agentdemofrontend.views.html.main_template(appConfig, title = Messages("salary.title"), bodyClasses = None) {
 
@@ -23,7 +23,7 @@ action = LandTaxController.submitSalaryForm,
     @for(label <- periodLabels) {
     <label class="block-label selection-button-radio">@Messages(s"quick_calc.salary.$label.label")
         <input type="radio"
-               name="period"
+               name="land"
                id="@label"
                value="@Messages(s"quick_calc.salary.$label.label")"
         @if(radioFieldPeriod.value.contains(Messages(s"quick_calc.salary.$label.label"))) { checked="checked" } />
