@@ -5,7 +5,17 @@ sealed trait LandType {
 }
 
 object LandType {
-  case object Residential extends LandType { val tax = 0.5 }
-  case object Commercial extends LandType { val tax = 1 }
+  case object Residential extends LandType { val tax: Double = 0.005 }
+  case object Commercial extends LandType { val tax: Double = 0.001 }
+  case object Unknown extends LandType { val tax: Double = 0 }
+
+  def toLandType(x: String): LandType =
+    x.toUpperCase match {
+      case "COMMERCIAL" => Commercial
+      case "RESIDENTIAL" => Residential
+      case _ => Unknown
+
+    }
+
 }
 
