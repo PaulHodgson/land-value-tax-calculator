@@ -1,0 +1,2 @@
+error.arn.invalid = Please enter a valid ARN (Agent Reference Number)
+error.mtdItId.invalid = Please enter a valid MTD-IT-ID (Client ID)

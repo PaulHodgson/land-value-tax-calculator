@@ -1,0 +1,53 @@
+@(appConfig: uk.gov.hmrc.agentdemofrontend.config.AppConfig,
+        title: String,
+        sidebarLinks: Option[Html] = None,
+        contentHeader: Option[Html] = None,
+        bodyClasses: Option[String] = None,
+        mainClass: Option[String] = None,
+        scriptElem: Option[Html] = None)(mainContent: Html)(implicit request: Request[_], messages: Messages)
+
+    @import uk.gov.hmrc.play.views.html.layouts
+
+
+@serviceInfoContent = {}
+
+@sidebar = {
+@if(sidebarLinks.isDefined) {
+    @layouts.sidebar(sidebarLinks.get, Some("sidebar"))
+}
+}
+
+@showErrorOrMessage = {
+    @if(request.flash.get("error").isDefined) {
+        <h3>
+        @request.flash.get("error").get
+        </h3>
+    } else {
+        @if(request.flash.get("message").isDefined) {
+            <h3>
+            @request.flash.get("message").get
+            </h3>
+        }
+    }
+}
+
+@mainContentWrapper = {
+
+    <h1>@title</h1>
+
+    @showErrorOrMessage
+
+    @mainContent
+}
+
+
+@govuk_wrapper(appConfig = appConfig,
+    title = title,
+    mainClass = mainClass,
+    bodyClasses = bodyClasses,
+    sidebar = sidebar,
+    contentHeader = contentHeader,
+    mainContent = layouts.article(mainContentWrapper),
+    serviceInfoContent = serviceInfoContent,
+    scriptElem = scriptElem
+)

@@ -1,0 +1,34 @@
+@import uk.gov.hmrc.agentdemofrontend.config.AppConfig
+@import uk.gov.hmrc.play.views.html.helpers.form
+@import uk.gov.hmrc.play.views.html.helpers.input
+@import uk.gov.hmrc.agentdemofrontend.controllers.routes.RelationshipsController
+@import uk.gov.hmrc.agentdemofrontend.controllers.RelationshipDetails
+
+@(detailsForm: Form[RelationshipDetails])(implicit request: Request[_], messages: Messages, appConfig: AppConfig)
+
+@uk.gov.hmrc.agentdemofrontend.views.html.main_template(
+    appConfig,
+    title = "Remove Agent-Client Relationship",
+    bodyClasses = None) {
+
+    @form(
+        action = uk.gov.hmrc.agentdemofrontend.controllers.routes.RelationshipsController.remove,
+        'class -> "form js-form") {
+
+        <div class="form-field">
+            <h3>
+                The relationship between Agent @detailsForm("arn").value and Client @detailsForm("clientId").value exists.
+                You can now remove relationship or go back to the check page.
+            </h3>
+            @input(detailsForm("arn"), '_type -> "hidden")
+            @input(detailsForm("clientId"), '_type -> "hidden")
+            <input class="button" type="submit" id="remove" value="Remove Relationship">
+        </div>
+    }
+
+    <p>
+        <a href="@RelationshipsController.start">
+            Return to agent relationship check
+        </a>
+    </p>
+}
