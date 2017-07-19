@@ -29,7 +29,8 @@ private object AppDependencies {
     "uk.gov.hmrc" %% "play-health" % "2.1.0",
     "uk.gov.hmrc" %% "play-ui" % "7.4.0",
     "uk.gov.hmrc" %% "agent-kenshoo-monitoring" % "2.3.0",
-    "uk.gov.hmrc" %% "agent-mtd-identifiers" % "0.5.0"
+    "uk.gov.hmrc" %% "agent-mtd-identifiers" % "0.5.0",
+    "org.jsoup" % "jsoup" % "1.7.3"
   )
 
   val test = Seq(
