@@ -61,8 +61,8 @@ class LandTaxController @Inject()(override val messagesApi: MessagesApi)
   }
 
   def calculateTax(postcode: String, land: String): Action[AnyContent] = Action.async { implicit request =>
-    calc.calc(postcode,LandType.toLandType(land)).map { x =>
-      Ok(html.calculation_complete(postcode, x))
+    calc.calc(postcode,LandType.toLandType(land)).map { case (tax, value) =>
+      Ok(html.calculation_complete(postcode, tax, value))
     }.recover {
       case _=> BadRequest
     }

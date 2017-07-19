@@ -14,7 +14,7 @@ import scala.concurrent.Future
 class LandValueTaxCalculatorService @Inject()(zooplaScraperConnector: ZooplaScraperConnector) {
   val repository = AgentStateRepository()
 
-  def calc(postcode:String, land:LandType): Future[Double] = {
+  def calc(postcode:String, land:LandType): Future[(Double, Double)] = {
     val value: Future[Double] = land match {
       case Commercial => {
         repository.findBusinessRates(postcode).map(values => {
@@ -26,11 +26,6 @@ class LandValueTaxCalculatorService @Inject()(zooplaScraperConnector: ZooplaScra
       case _ => Future.failed(new Exception("Invalid land type"))
     }
 
-    value.map(_ * land.tax)
+    value.map(x => (x * land.tax, x))
   }
-
-  def commercialValue: Future[Double] = {
-    Future successful 100000
-  }
-
 }
