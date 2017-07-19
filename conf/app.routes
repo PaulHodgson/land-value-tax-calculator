@@ -1,13 +1,10 @@
 # microservice specific routes
 
-GET        /                                @uk.gov.hmrc.agentdemofrontend.controllers.RootController.root
+GET         /                               @uk.gov.hmrc.agentdemofrontend.controllers.LandTaxController.redirectToSalaryForm
 
-GET        /relationships/                  @uk.gov.hmrc.agentdemofrontend.controllers.RelationshipsController.start
-POST       /relationships/check             @uk.gov.hmrc.agentdemofrontend.controllers.RelationshipsController.check
-POST       /relationships/remove            @uk.gov.hmrc.agentdemofrontend.controllers.RelationshipsController.remove
-POST       /relationships/clean-db          @uk.gov.hmrc.agentdemofrontend.controllers.RelationshipsController.cleanCopyStatusRecord
-GET        /relationships/add               @uk.gov.hmrc.agentdemofrontend.controllers.RelationshipsController.createForm
-POST       /relationships/add               @uk.gov.hmrc.agentdemofrontend.controllers.RelationshipsController.create
+GET         /your-pay                       @uk.gov.hmrc.agentdemofrontend.controllers.LandTaxController.showSalaryForm
+POST        /your-pay                       @uk.gov.hmrc.agentdemofrontend.controllers.LandTaxController.submitSalaryForm
 
-GET        /errors                          @uk.gov.hmrc.agentdemofrontend.controllers.RelationshipsController.showErrors
-GET        /success                         @uk.gov.hmrc.agentdemofrontend.controllers.RelationshipsController.success
+GET        /submit/                         @uk.gov.hmrc.agentdemofrontend.controllers.LandTaxController.calculateTax(postcode: String, land: String)
+
+
