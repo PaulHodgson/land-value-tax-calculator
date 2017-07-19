@@ -17,6 +17,11 @@ trait BusinessRatesRepository {
   def findBusinessRates(postCode: String): Future[Seq[BusinessRate]]
 }
 
+object AgentStateRepository extends MongoDbConnection {
+  private lazy val repository = new BusinessRatesMongoRepository(db)
+  def apply(): BusinessRatesRepository = repository
+}
+
 class BusinessRatesMongoRepository(mongo: () => DB)
   extends ReactiveRepository[BusinessRate, BSONObjectID]("businessrates", mongo, BusinessRate.format, ReactiveMongoFormats.objectIdFormats)
     with BusinessRatesRepository with Repository[BusinessRate, BSONObjectID] {
